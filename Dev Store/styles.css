@@ -571,17 +571,6 @@ header {
   }
 }
 
-.item {
-  pointer-events: none; /* Desativa o clique em toda a área do item */
-}
-
-.item.active {
-  pointer-events: auto; /* Ativa apenas no item visível */
-  z-index: 10; /* Garante que o item ativo fique acima dos outros */
-}
-
-.item .content,
-.item .product-img,
 .item .btn {
   pointer-events: auto; /* Garante que o conteúdo interno possa ser clicado */
 }

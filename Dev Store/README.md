@@ -32,10 +32,7 @@ A tipografia e os efeitos foram escolhidos para transmitir inovação e elegânc
 
 🖼️ Demonstração
 
-https://meirielli-devstore.netlify.app/
-
-Ou, se estiver publicado no GitHub Pages:
-👉 Acesse o projeto online
+👉 Acesse o projeto online: https://meirielli-devstore.netlify.app/
 
 📂 Estrutura de Pastas
 ```

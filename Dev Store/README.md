@@ -1,4 +1,4 @@
-🛍️ Dev Store
+🛍️ Dev Store 
 
 Projeto de uma landing page interativa e responsiva desenvolvida com HTML, CSS e JavaScript, inspirada em uma videoaula do canal DevClub|Programação.
 A proposta é apresentar produtos tecnológicos com um design moderno, animações suaves e efeitos visuais de destaque.
@@ -32,6 +32,7 @@ A tipografia e os efeitos foram escolhidos para transmitir inovação e elegânc
 
 🖼️ Demonstração
 
+https://meirielli-devstore.netlify.app/
 
 Ou, se estiver publicado no GitHub Pages:
 👉 Acesse o projeto online

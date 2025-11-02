@@ -31,7 +31,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 3; /* Garante que o header fique acima de outros elementos */
+  z-index: 20; /* Garante que o header fique acima de outros elementos */
 }
 
 .logo {
@@ -570,6 +570,16 @@ header {
     gap: 10px;
   }
 }
+
+.item {
+  pointer-events: none; /* Desativa o clique em toda a área do item */
+}
+
+.item.active {
+  pointer-events: auto; /* Ativa apenas no item visível */
+  z-index: 10; /* Garante que o item ativo fique acima dos outros */
+}
+
 
 .item .btn {
   pointer-events: auto; /* Garante que o conteúdo interno possa ser clicado */

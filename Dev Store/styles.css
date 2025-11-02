@@ -1,0 +1,571 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Inclui padding e border na largura e altura totais */
+  list-style: none; /* Remover marcadores de listas */
+  font-family: var(--font02);
+}
+
+:root {
+  --font01: "Poppins", sans-serif;
+  --font02: "Montserrat", sans-serif;
+  --font03: "Orbitron", sans-serif;
+}
+
+body {
+  background-color: #0f0f1e;
+  color: #ffff;
+  font-size: 16px;
+  overflow: hidden; /* Evita scrollbars indesejados */
+}
+
+header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3; /* Garante que o header fique acima de outros elementos */
+}
+
+.logo {
+  font-family: var(--font03);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #00f7ff;
+  text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+header nav ul {
+  display: flex;
+  gap: 48px;
+}
+
+header nav ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 5px 0;
+}
+
+header nav ul li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #00f7ff;
+}
+
+header nav ul li:hover::after {
+  width: 100%;
+  transition: width 0.3s ease;
+}
+
+.container {
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    #0f0f1e 0%,
+    #1f1f3a 100%
+  ); /* Fundo gradiente */
+  overflow: hidden; /* Evita scrollbars indesejados */
+}
+
+.container::before {
+  content: "";
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 247, 255, 0.2) 0%,
+    rgba(15, 15, 30, 0) 70%
+  );
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(50px);
+  z-index: 1; /* Garante que o efeito fique atrás do conteúdo */
+  animation: pulse 4s infinite alternate; /* Aplica a animação de pulso */
+}
+
+@keyframes pulse {
+  /* Animação de pulso para o efeito de fundo */
+  0% {
+    opacity: 0.5; /* Opacidade inicial*/
+    transform: translate(-50%, -50%) scale(0.8); /* Escala inicial */
+  }
+  100% {
+    opacity: 1; /* Opacidade final */
+    transform: translate(-50%, -50%) scale(2); /* Escala final */
+  }
+}
+
+.tech-circle,
+.container::before {
+  pointer-events: none; /* impede que esses elementos bloqueiem o clique */
+}
+
+.tech-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 247, 255, 0.2);
+}
+
+.circle:nth-child(1) {
+  /* Selecionas os circulos */
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+}
+
+.circle:nth-child(2) {
+  width: 300px;
+  height: 300px;
+  top: 60%;
+  left: 80%;
+}
+
+.circle:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  top: 70%;
+  left: 20%;
+}
+
+.circle:nth-child(4) {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  left: 70%;
+}
+
+.list {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.item {
+  position: absolute;
+  inset: 0; /* Define top, right, bottom e left como 0 */
+  display: flex; /* Centraliza o conteúdo */
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Itens inicialmente invisíveis */
+
+  /*ANIMAÇÃO*/
+  transform: translateX(100vh);
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; /* Transição suave */
+}
+
+.active {
+  opacity: 1; /* Item ativo visível */
+  transform: translateX(0); /* Move o item para a posição original */
+}
+
+.product-img {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2; /* Garante que a imagem fique acima(frente) do fundo */
+}
+
+.product-img img {
+  max-width: 80%;
+  max-height: 60%;
+  filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3));
+
+  transform: translateX(400px);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease-in-out;
+  transition-delay: 0.5s;
+}
+
+.active .product-img img {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.content {
+  width: 55%;
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column; /* Alinha o conteúdo em coluna */
+  align-items: flex-start; /* Alinha o conteúdo ao topo */
+  justify-content: center;
+  z-index: 2;
+}
+
+.product-tag {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #00f7ff;
+  font-weight: 600;
+  letter-spacing: 2px; /* Espaçamento entre letras */
+  margin-bottom: 10px;
+  /*ANIMAÇÃO*/
+  transform: translateX(400px);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease-in-out;
+  transition-delay: 0.5s;
+}
+
+.active .product-tag {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.product-name {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: var(--font03);
+  line-height: 1.1; /* Espaçamento entre linhas */
+  margin-bottom: 20px;
+  /*ANIMAÇÃO*/
+  transform: translateX(400px);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease-in-out;
+  transition-delay: 0.5s;
+}
+
+.active .product-name {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #b8b8d0;
+  line-height: 1.6; /* Espaçamento entre linhas */
+  margin-bottom: 30px;
+  max-width: 600px;
+  /*ANIMAÇÃO*/
+  transform: translateX(400px);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease-in-out;
+  transition-delay: 0.5s;
+}
+
+.active .description {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ==== BOTÃO COM EFEITO DE BRILHO PULSANTE ==== */
+a.btn {
+  display: inline-block; /* Permite definir largura e altura */
+  padding: 12px 16px;
+  background: linear-gradient(90deg, #00f7ff, #0066ff);
+  border-radius: 30px;
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  position: relative;
+  margin-left: auto; /* empurra o botão para a direita */
+  z-index: 11;
+  overflow: hidden; /* Esconde o overflow para o efeito de reflexo */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: pulseGlow 2s infinite; /* Aplica a animação de brilho pulsante */
+}
+
+/* Reflexo que desliza no hover */
+a.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  transition: all 0.5s ease; /* Transição suave */
+}
+
+a.btn:hover::before {
+  left: 100%;
+}
+
+/* Efeito de elevação e inversão de cores ao passar o mouse */
+a.btn:hover {
+  background: linear-gradient(90deg, #0066ff, #00f7ff);
+  transform: translateY(-5px);
+}
+
+/* Animação de brilho pulsante */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+  }
+  50% {
+    box-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff;
+  }
+  100% {
+    box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+  }
+}
+
+.arrows {
+  position: absolute;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5; /* Garante que as setas fiquem acima de outros elementos */
+}
+
+.arrow-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 247, 255, 0.3);
+}
+
+.arrow-btn:hover {
+  background-color: rgba(0, 247, 255, 0.2);
+  border-color: #00f7ff;
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+}
+
+.indicators {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Espaçamento entre os elementos */
+  z-index: 5;
+}
+
+.numbers {
+  font-family: var(--font03);
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.dots {
+  display: flex;
+  gap: 10px; /* Espaçamento entre os pontos */
+}
+
+.dot {
+  width: 40px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background-color: #00f7ff;
+  box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
+/* ====== RESPONSIVIDADE ====== */
+
+/* Tablets (até 1024px) */
+@media (max-width: 1024px) {
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .product-name {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .product-img img {
+    max-width: 70%;
+    max-height: 50%;
+  }
+
+  header nav ul {
+    gap: 24px;
+  }
+}
+
+/* Smartphones (até 768px) */
+@media (max-width: 768px) {
+  /* ===== ITENS DO SLIDER ===== */
+  .item {
+    flex-direction: column; /* Coloca a imagem em cima e texto abaixo */
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center; /* Centraliza o texto */
+    padding: 10px 0; /* Espaçamento interno */
+  }
+
+  .product-img {
+    width: 90%; /* Ajusta largura da imagem */
+    max-height: 262px; /* Ajusta altura máxima */
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-img img {
+    max-width: 84%;
+    max-height: 100%;
+  }
+
+  .content {
+    width: 100%; /* Ocupa toda largura disponível */
+    padding: 0 10px; /* Espaço entre imagem e texto */
+  }
+
+  .product-tag,
+  .product-name,
+  .description {
+    margin-top: 5px; /* Ajusta o espaçamento */
+  }
+
+  .description {
+    font-size: 1rem; /* Reduz tamanho do texto */
+  }
+
+  .product-tag {
+    font-size: 0.9rem;
+  }
+
+  a.btn {
+    font-size: 0.8rem;
+    padding: 8px 14px;
+    margin-left: auto;
+  }
+
+  .arrows {
+    width: 95%;
+  }
+
+  .arrow-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .numbers {
+    font-size: 1.5rem;
+  }
+
+  /* ===== MENU HAMBÚRGUER ===== */
+  .menu-toggle {
+    display: flex; /* Exibe o ícone do menu hambúrguer */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #00f7ff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Estado ativo (ícone vira X) */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+header {
+    padding: 30px 30px;
+}
+
+  header nav {
+    display: flex; /* Exibe o menu */
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha os itens ao topo */
+    align-items: center;
+    padding-top: 80px;
+    position: fixed; /* Torna o menu fixo */
+    top: 0;
+    right: -100%; /* Esconde o menu fora da tela */
+    background: rgba(15, 15, 30, 0.849);
+    width: 60%; /* Largura do menu */
+    height: 100%; /* Altura total da tela */
+    transition: right 0.3s ease;
+    z-index: 9;
+  }
+
+  header nav ul {
+    flex-direction: column; /* Itens em coluna */
+    gap: 30px; /* Espaçamento maior entre os itens */
+  }
+
+  header nav ul li {
+    font-size: 1.2rem;
+  }
+
+  header nav.active {
+    right: 0;
+  }
+}
+
+/* Telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+  .product-name {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  header nav ul {
+    gap: 10px;
+  }
+}
+

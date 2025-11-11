@@ -1,0 +1,80 @@
+header {
+    background-color: var(--color-neutral-1);
+    padding: 12px 4%;
+    position: sticky; /* Mantém o cabeçalho fixo no topo durante a rolagem.*/
+    top: 0;
+    z-index: 1;
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            width: 180px;
+        }
+
+        ul {
+            display: none; /* Oculta o menu por padrão em telas pequenas. */
+            list-style: none; /* Remove os marcadores padrão da lista. */
+            flex-direction: column; /* Alinha os itens verticalmente. */
+            gap: 0.5rem; /* Espaçamento entre os itens da lista. */
+            width: 100%; /* Ocupa toda a largura disponível. */
+            position: absolute; /* Permite posicionamento absoluto. */
+            top: 80px;
+            background-color: var(--color-neutral-1);
+            left: 0; /* Alinha à esquerda do contêiner pai. */
+            padding: 1rem; /* Espaçamento interno. */
+
+            &.show {
+                display: flex;
+            }
+
+            li {
+                text-align: center; /* Centraliza o texto dos itens do menu. */
+
+                a {
+                    color: var(--color-neutral-8);
+                    text-decoration: none;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        color: var(--color-primary-1);
+                        border-bottom: 1px solid var(--color-primary-1);
+                    }
+                }
+            }
+        }
+
+        .btn-default {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        .navbar {
+            .btn-mobile {
+                display: none;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                gap: 1rem;
+                width: auto;
+                padding: 0;
+            }
+
+            .btn-default {
+                display: block;
+            }
+        }
+    }
+    
+}
+

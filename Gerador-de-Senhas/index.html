@@ -31,9 +31,63 @@
             </div>
 
             <!-- Opções: Maiúsculas, Minúsculas, Números, Símbolos -->
-             
+             <div class="controle-grupo">
+                <label class="checkbox-container">Incluir Maiúsculas (A-Z)
+                    <input type="checkbox" name="maiusculas" id="maiusculas" checked>
+                    <span class="checkmark"></span>
+                </label>
+             </div>
+
+             <div class="controle-grupo">
+                <label class="checkbox-container">Incluir Minúsculas (a-z)
+                    <input type="checkbox" name="minusculas" id="minusculas" checked>
+                    <span class="checkmark"></span>
+                </label>
+             </div>
+
+             <div class="controle-grupo">
+                <label class="checkbox-container">Incluir Números (0-9)
+                    <input type="checkbox" name="numeros" id="numeros" checked>
+                    <span class="checkmark"></span>
+                </label>
+             </div>
+
+             <div class="controle-grupo">
+                <label class="checkbox-container">Incluir Símbolos (!@#...)
+                    <input type="checkbox" name="simbolos" id="simbolos">
+                    <span class="checkmark"></span>
+                </label>
+             </div>
         </div>
+
+    <!-- Painel de medição de força da senha -->
+        <div class="medidor-forca">
+            <span class="medidor-titulo">Força da Senha</span>
+            <div class="medidor-status">
+                <span class="texto-forca" id="texto-forca">Média</span>
+                <div class="barras" id="barras-forca">
+                    <div class="barra"></div>
+                    <div class="barra"></div>
+                    <div class="barra"></div>
+                    <div class="barra"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão para disparar a geração da senha -->
+        <button class="btn" id="btn-gerar">
+            Gerar Senha <i class="fa-solid fa-arrow-right"></i>
+        </button>
     </div>
-    
+
+    <!-- Div para alertas/notificações flutuantes (substitui o 'alert' do navegador) -->
+     <div id="alerta-sucesso" class="alerta">
+        <i class="fa-solid fa-circle-check"></i>Senha copiada com sucesso!
+     </div>
+
+     <!-- ==========================================
+       8. LÓGICA JAVASCRIPT
+       ========================================== -->
+       <script src="script.js"></script>
 </body>
 </html>
